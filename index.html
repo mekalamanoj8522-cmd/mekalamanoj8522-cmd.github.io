@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ALLIED</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">ALLIED</div>
+
+        <button class="search-btn" onclick="openSearch()">
+            🔍
+        </button>
+    </header>
+
+    <main class="home">
+
+        <h1>Welcome to ALLIED</h1>
+
+        <p class="subtitle">
+            Watch videos and listen to music
+        </p>
+
+        <div class="cards">
+
+            <button class="main-card" onclick="openVideos()">
+                <span>▶️</span>
+                <strong>Videos</strong>
+                <small>Watch your favorite videos</small>
+            </button>
+
+            <button class="main-card" onclick="openMusic()">
+                <span>🎵</span>
+                <strong>Music</strong>
+                <small>Listen to your favorite music</small>
+            </button>
+
+        </div>
+
+    </main>
+
+    <nav class="bottom-nav">
+
+        <button onclick="goHome()">
+            🏠
+            <span>Home</span>
+        </button>
+
+        <button onclick="openFavorites()">
+            ❤️
+            <span>Favorites</span>
+        </button>
+
+        <button onclick="openPlaylists()">
+    🎶
+    <span>Playlists</span>
+        </button>
+
+        <button onclick="openSettings()">
+            ⚙️
+            <span>Settings</span>
+        </button>
+
+    </nav>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
