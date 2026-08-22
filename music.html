@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ALLIED Music</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        ALLIED
+    </div>
+
+    <button
+        class="search-btn"
+        onclick="history.back()">
+        ←
+    </button>
+
+</header>
+
+
+<main class="home">
+
+    <h1>🎵 Music</h1>
+
+    <p class="subtitle">
+        Your music library
+    </p>
+
+
+    <div class="music-card">
+
+        <div class="music-icon">
+            🎵
+        </div>
+
+        <div class="music-details">
+
+            <strong>
+                ALLIED Music
+            </strong>
+
+            <small>
+                Add your own audio files
+            </small>
+
+        </div>
+
+        <button
+            id="playButton"
+            onclick="toggleMusic()">
+
+            ▶️
+
+        </button>
+
+    </div>
+
+
+    <audio
+        id="audioPlayer"
+        controls
+        preload="metadata">
+
+        <source
+            src="sample.mp3"
+            type="audio/mpeg">
+
+        Your browser does not support audio.
+
+    </audio>
+
+</main>
+
+
+<script>
+
+ const audio = document.getElementById("audioPlayer");
+const button = document.getElementById("playButton");
+
+function updateButton() {
+    button.textContent = audio.paused ? "▶️" : "⏸️";
+}
+
+function setupMediaSession() {
+
+    if (!("mediaSession" in navigator)) {
+        return;
+    }
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: "ALLIED Music",
+        artist: "ALLIED",
+        album: "ALLIED",
+        artwork: [
+            {
+                src: "icon.png",
+                sizes: "512x512",
+                type: "image/png"
+            }
+        ]
+    });
+
+    navigator.mediaSession.setActionHandler(
+        "play",
+        function () {
+            audio.play();
+        }
+    );
+
+    navigator.mediaSession.setActionHandler(
+        "pause",
+        function () {
+            audio.pause();
+        }
+    );
+
+    navigator.mediaSession.setActionHandler(
+        "seekbackward",
+        function () {
+            audio.currentTime =
+                Math.max(0, audio.currentTime - 10);
+        }
+    );
+
+    navigator.mediaSession.setActionHandler(
+        "seekforward",
+        function () {
+            audio.currentTime =
+                Math.min(
+                    audio.duration || Infinity,
+                    audio.currentTime + 10
+                );
+        }
+    );
+}
+
+function toggleMusic() {
+
+    if (audio.paused) {
+
+        audio.play()
+            .then(function () {
+                updateButton();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    } else {
+
+        audio.pause();
+        updateButton();
+
+    }
+}
+
+audio.addEventListener("play", updateButton);
+audio.addEventListener("pause", updateButton);
+
+audio.addEventListener("ended", function () {
+    updateButton();
+
+    if ("mediaSession" in navigator) {
+        navigator.mediaSession.playbackState = "none";
+    }
+});
+
+audio.addEventListener("playing", function () {
+
+    if ("mediaSession" in navigator) {
+        navigator.mediaSession.playbackState = "playing";
+    }
+
+});
+
+audio.addEventListener("pause", function () {
+
+    if ("mediaSession" in navigator) {
+        navigator.mediaSession.playbackState = "paused";
+    }
+
+});
+
+setupMediaSession();
+updateButton();
+</script>
+
+</body>
+
+</html>
