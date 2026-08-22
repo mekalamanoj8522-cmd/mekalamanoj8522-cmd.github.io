@@ -1,0 +1,261 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #0b0b0f;
+    color: white;
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+/* Header */
+
+.header {
+    height: 70px;
+    background: #111116;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid #24242b;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.search-btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: #1d1d25;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Home */
+
+.home {
+    padding: 28px 20px;
+}
+
+.home h1 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #9999a3;
+    font-size: 15px;
+ .search-box {
+    display: flex;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.search-box input {
+    flex: 1;
+    height: 50px;
+    border: 1px solid #303038;
+    border-radius: 14px;
+    background: #18181e;
+    color: white;
+    padding: 0 16px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-box button {
+    width: 52px;
+    border: none;
+    border-radius: 14px;
+    background: #ff0033;
+    color: white;
+    font-size: 20px;
+}
+
+.video-card {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding: 10px;
+    border-radius: 14px;
+    background: #17171d;
+    cursor: pointer;
+}
+
+.video-card img {
+    width: 140px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.video-info {
+    flex: 1;
+}
+
+.video-info h3 {
+    color: white;
+    font-size: 15px;
+    line-height: 1.3;
+    margin-bottom: 8px;
+}
+
+.video-info p {
+    color: #9999a3;
+    font-size: 12px;
+}   margin-bottom: 28px;
+}
+
+/* Cards */
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.main-card {
+    width: 100%;
+    min-height: 120px;
+    border: 1px solid #292930;
+    border-radius: 18px;
+    background: #17171d;
+    color: white;
+    text-align: left;
+    padding: 22px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.main-card:active {
+    transform: scale(0.97);
+}
+
+.main-card span {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.main-card strong {
+    display: block;
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+
+.main-card small {
+    color: #9999a3;
+    font-size: 13px;
+}
+
+/* Bottom Navigation */
+
+.bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 72px;
+    background: #111116;
+    border-top: 1px solid #292930;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 20;
+}
+
+.bottom-nav button {
+    background: transparent;
+    border: none;
+    color: #9999a3;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.bottom-nav button:first-child {
+    color: white;
+}
+
+.bottom-nav span {
+    font-size: 11px;
+}
+
+/* Mobile */
+
+@media (max-width: 400px) {
+
+    .home h1 {
+        font-size: 24px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+}
+.music-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    margin-top: 20px;
+    background: #17171d;
+    border: 1px solid #292930;
+    border-radius: 16px;
+}
+
+.music-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #25252d;
+    border-radius: 12px;
+    font-size: 27px;
+}
+
+.music-details {
+    flex: 1;
+}
+
+.music-details strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.music-details small {
+    color: #9999a3;
+}
+
+.music-card button {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: #ff0033;
+    color: white;
+    font-size: 18px;
+}
+
+#audioPlayer {
+    width: 100%;
+    margin-top: 25px;
+}
