@@ -33,15 +33,30 @@ body {
     letter-spacing: 2px;
 }
 
+/* Header Search Button */
+
 .search-btn {
     width: 45px;
     height: 45px;
     border: none;
     border-radius: 50%;
-    background: #1d1d25;
+    background: linear-gradient(135deg, #ff007a, #7928ca, #00d4ff);
+    background-size: 250% 250%;
     color: white;
     font-size: 20px;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(121, 40, 202, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.search-btn:hover {
+    background-position: right center;
+    transform: translateY(-2px) scale(1.08) rotate(8deg);
+    box-shadow: 0 6px 20px rgba(255, 0, 122, 0.6);
+}
+
+.search-btn:active {
+    transform: translateY(0) scale(0.95);
 }
 
 /* Home */
@@ -58,7 +73,12 @@ body {
 .subtitle {
     color: #9999a3;
     font-size: 15px;
- .search-box {
+    margin-bottom: 28px;
+}
+
+/* Search Box & Button */
+
+.search-box {
     display: flex;
     gap: 8px;
     margin: 20px 0;
@@ -74,16 +94,39 @@ body {
     padding: 0 16px;
     font-size: 16px;
     outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-box input:focus {
+    border-color: #ff007a;
+    box-shadow: 0 0 12px rgba(255, 0, 122, 0.25);
 }
 
 .search-box button {
     width: 52px;
+    height: 50px;
     border: none;
     border-radius: 14px;
-    background: #ff0033;
+    background: linear-gradient(135deg, #ff0055, #ff5500, #ff00aa);
+    background-size: 200% 200%;
     color: white;
     font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 0, 85, 0.4);
+    transition: all 0.3s ease;
 }
+
+.search-box button:hover {
+    background-position: right center;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 85, 0, 0.6);
+}
+
+.search-box button:active {
+    transform: scale(0.95);
+}
+
+/* Video Card */
 
 .video-card {
     display: flex;
@@ -93,6 +136,12 @@ body {
     border-radius: 14px;
     background: #17171d;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 .video-card img {
@@ -116,10 +165,9 @@ body {
 .video-info p {
     color: #9999a3;
     font-size: 12px;
-}   margin-bottom: 28px;
 }
 
-/* Cards */
+/* Interactive Cards */
 
 .cards {
     display: flex;
@@ -137,7 +185,30 @@ body {
     text-align: left;
     padding: 22px;
     cursor: pointer;
-    transition: 0.2s;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.main-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    transition: left 0.5s ease;
+}
+
+.main-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 0, 122, 0.4);
+    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.15);
+}
+
+.main-card:hover::before {
+    left: 100%;
 }
 
 .main-card:active {
@@ -161,54 +232,8 @@ body {
     font-size: 13px;
 }
 
-/* Bottom Navigation */
+/* Music Card & Play Button */
 
-.bottom-nav {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 72px;
-    background: #111116;
-    border-top: 1px solid #292930;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 20;
-}
-
-.bottom-nav button {
-    background: transparent;
-    border: none;
-    color: #9999a3;
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-}
-
-.bottom-nav button:first-child {
-    color: white;
-}
-
-.bottom-nav span {
-    font-size: 11px;
-}
-
-/* Mobile */
-
-@media (max-width: 400px) {
-
-    .home h1 {
-        font-size: 24px;
-    }
-
-    .logo {
-        font-size: 24px;
-    }
-}
 .music-card {
     display: flex;
     align-items: center;
@@ -250,12 +275,100 @@ body {
     height: 48px;
     border: none;
     border-radius: 50%;
-    background: #ff0033;
+    background: linear-gradient(45deg, #00f2fe, #4facfe, #000851);
+    background-size: 200% 200%;
     color: white;
     font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+    animation: musicPulse 3s ease-in-out infinite alternate;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+@keyframes musicPulse {
+    0% {
+        background-position: 0% 50%;
+        box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
+    }
+    100% {
+        background-position: 100% 50%;
+        box-shadow: 0 6px 20px rgba(79, 172, 254, 0.7);
+    }
+}
+
+.music-card button:hover {
+    transform: scale(1.12);
+    box-shadow: 0 6px 22px rgba(0, 242, 254, 0.8);
+}
+
+.music-card button:active {
+    transform: scale(0.92);
+}
+
+/* Audio Player */
 
 #audioPlayer {
     width: 100%;
     margin-top: 25px;
+}
+
+/* Bottom Navigation */
+
+.bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 72px;
+    background: #111116;
+    border-top: 1px solid #292930;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 20;
+}
+
+.bottom-nav button {
+    background: transparent;
+    border: none;
+    color: #9999a3;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.bottom-nav button:first-child,
+.bottom-nav button:hover {
+    color: #00f2fe;
+    background: linear-gradient(135deg, #00f2fe, #9b51e0, #ff007a);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: translateY(-2px);
+}
+
+.bottom-nav button:active {
+    transform: scale(0.92);
+}
+
+.bottom-nav span {
+    font-size: 11px;
+}
+
+/* Responsive */
+
+@media (max-width: 400px) {
+    .home h1 {
+        font-size: 24px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
 }
